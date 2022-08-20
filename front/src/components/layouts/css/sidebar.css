@@ -1,0 +1,65 @@
+home__container {
+    position: relative;
+}
+
+/* ======================================= */
+/* SIDEBAR */
+/* ======================================= */
+
+.sidebar {
+    width: 20vw;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 5rem;
+}
+
+.sidebar-card__container {
+    cursor: pointer;
+}
+
+.sidebar-card__container-active {
+    border: 2px solid black;
+}
+
+/* ======================================= */
+/* CHATBOX */
+/* ======================================= */
+.chat-box-and-input__container {
+    position: absolute;
+    top: 4.5rem;
+    right: 1rem;
+    padding: 0 20px;
+    background: white;
+    width: 78vw;
+}
+
+.chat-box__container {
+    height: 80vh;
+    padding-left: 1rem;
+    word-wrap: break-word;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.chat-box-message-input__container {
+    height: 5vh;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.chat-box__message-input {
+    flex-grow: 18;
+    height: 100%;
+}
+
+.chat-box-message-send__btn {
+    flex-grow: 1;
+    height: 100%;
+    border: none;
+    background-color: black;
+    color: white;
+}

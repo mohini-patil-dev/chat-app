@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ../back/
+    image: chat-back
+    container_name: chat-back
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGODB_URI=mongodb://chat-mongo:27017/chat
+      - REDIS_URL=redis://default@chat-redis:6379
+      - JWT_SECRET=my_jwt_secret
+      - PORT=8080
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: chat-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db/mongo-docker:/data/db
+      - ./db/mongo-docker:/data/configdb
+    depends_on:
+      - redis
+
+  redis:
+    image: redis
+    container_name: chat-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./db/mongo-docker:/data
+
+  frontend:
+    build: ../front/
+    image: chat-front
+    container_name: chat-front
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
